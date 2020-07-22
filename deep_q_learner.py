@@ -4,7 +4,6 @@ import torch.optim as optim
 import random
 import numpy as np
 
-
 class function_approximator(nn.Module):
     def __init__(self, inputs, hiddens, outputs):
         super(function_approximator, self).__init__()
@@ -26,6 +25,7 @@ class qnlearner:
         self.optimizer = optim.SGD(self.q_function.parameters(), lr = 0.01, momentum=0.9)
         self.gamma = gamma
         self.history = []
+        self.memory = []
 
     def get_state(self):
         return torch.from_numpy(self.env.get_state()).float()
